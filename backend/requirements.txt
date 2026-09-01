@@ -7,3 +7,6 @@ statsmodels
 numpy
 supabase
 python-dotenv
+pytest
+pytest-mock
+httpx
