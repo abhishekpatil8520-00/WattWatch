@@ -32,8 +32,11 @@ const SignUp = () => {
     if (error) {
       setError(error.message);
       setLoading(false);
+    } else if (data.session) {
+      // Auto login successful (Email confirmation disabled)
+      navigate('/dashboard');
     } else {
-      setSuccess('Registration successful! You can now sign in.');
+      setSuccess('Registration successful! Please check your email to confirm your account.');
       setLoading(false);
       setTimeout(() => navigate('/signin'), 3000);
     }
