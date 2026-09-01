@@ -1,127 +1,60 @@
 # WattWatch
 
-**Explainable Smart Grid Intelligence for Demand Forecasting and Anomaly Detection**
+> **Explainable Smart Grid Intelligence for Demand Forecasting and Anomaly Detection**
 
-WattWatch is a standalone decision-support system built for electricity utilities. It forecasts short-term electricity demand and detects suspicious smart meter consumption patterns -- helping operators identify theft, tampering, and faulty meters before they become costly problems.
+WattWatch is a standalone, human-in-the-loop decision-support platform designed for electricity utilities. It forecasts short-term electricity demand and detects suspicious smart meter consumption patterns, helping operators identify potential electricity theft, meter tampering, and faulty hardware before they cause critical grid failures or significant financial losses.
 
-The system never takes automatic action. Every prediction and anomaly flag is routed to human operators for review.
-
----
-
-## Why This Exists
-
-Utility operators deal with growing data volumes from smart meters but often lack the tools to make sense of it all. WattWatch bridges that gap by combining demand forecasting with anomaly detection in a single, explainable interface. It does not require a data science background to use.
+> [!IMPORTANT]
+> **Human-in-the-Loop Philosophy**
+> WattWatch is built on the strict principle that **no automatic action is ever taken against a customer or utility system**. The platform generates insights, flags anomalies, and provides evidence. A human operator reviews, confirms, and dictates the next steps.
 
 ---
 
-## What It Does
+## 📖 Documentation
 
-### Demand Forecasting
+Welcome to the WattWatch documentation. This project is built incrementally to showcase a robust architecture that goes from simple rule-based baselines to advanced machine learning models, always prioritizing **explainability** and **auditability**.
 
-- Predicts day-ahead electricity demand and 24-hour hourly forecasts
-- Operates at individual meter, zone, and area levels
-- Compares predictions against baselines: same time last week and historical averages
-- Ranks zones by demand spike and grid stress risk
-- Every forecast comes with a plain-language explanation of why the model expects what it expects
-
-### Anomaly Detection
-
-Identifies five categories of suspicious behavior:
-
-| Anomaly Type | What It Means |
+| Document | Description |
 |---|---|
-| Sudden drop | Consumption fell sharply compared to the meter's own history |
-| Near-zero consumption | A previously active meter suddenly reports almost nothing |
-| Sudden spike | Consumption jumped well above normal |
-| Irregular pattern | Readings change unpredictably between consecutive periods |
-| Peer deviation | A meter behaves very differently from similar or nearby meters |
-
-Each flagged anomaly includes:
-
-- The reason it was flagged
-- Historical and peer comparison data
-- A confidence level (low, medium, or high)
-- A plain-language explanation
-
-### Possible Causes the System Considers
-
-- Electricity theft
-- Meter tampering
-- Meter malfunction
-- Data collection issues
-- Normal user behavior (e.g., someone traveling, a business closing temporarily, holidays)
+| [Project Spec](docs/PROJECT_SPEC.md) | Problem definition, goals, non-goals, and constraints. |
+| [Architecture](docs/ARCHITECTURE.md) | High-level system design and component interaction. |
+| [Roadmap](docs/ROADMAP.md) | Phased development plan from baselines to ML. |
+| [Data Contract](docs/DATA_CONTRACT.md) | Smart meter schema and validation rules. |
+| [ML Strategy](docs/ML_STRATEGY.md) | Progression from heuristics to advanced forecasting. |
+| [Explainability](docs/EXPLAINABILITY.md) | How the system justifies its predictions to non-technical users. |
+| [API Spec](docs/API_SPEC.md) | RESTful API endpoints for the dashboard. |
+| [Evaluation](docs/EVALUATION.md) | Metrics for accuracy, false positives, and success. |
+| [Decisions (ADR)](docs/DECISIONS.md) | Technical architecture decision records. |
+| [Threat Model](docs/THREAT_MODEL.md) | Security and data protection considerations. |
+| [Demo Instructions](docs/DEMO.md) | How to run WattWatch locally using synthetic data. |
 
 ---
 
-## Human-in-the-Loop
+## 🚀 Key Features
 
-This is a core design principle, not an afterthought. WattWatch supports human decision-making -- it does not replace it.
+### 1. Explainable Anomaly Detection
+Identifies sudden drops, near-zero consumption, unprecedented spikes, irregular patterns, and peer deviations. Every anomaly comes with a clear reason, peer context, confidence score, and plain-language explanation.
 
-**The system generates forecasts, calculates risk, detects anomalies, and presents evidence.**
+### 2. Demand Forecasting
+Predicts day-ahead electricity demand with 24-hour granular forecasts at the meter, zone, and area levels. Compares predictions against historical baselines and tracks model drift.
 
-**The human reviews forecasts, confirms issues, marks false alarms, and requests field inspections.**
-
-No operational decision is made without a person in the loop.
-
----
-
-## Explainability and Auditability
-
-WattWatch does not produce black-box outputs. Every prediction and anomaly flag is accompanied by:
-
-- Key factors behind the result
-- Baseline comparisons
-- Predicted versus actual values (when available)
-- Confidence scores
-- A full audit trail: input data reference, timestamp, method used, result, explanation, and human review status
+### 3. Human-Centric Dashboard
+A non-technical operator dashboard featuring:
+- **Overview:** High-risk zones and anomaly counts.
+- **Demand Forecast:** Real-time baseline comparison charts.
+- **Anomaly Review:** Filtered queue of flagged meters with audit trails.
+- **Performance:** Model accuracy and false positive tracking.
 
 ---
 
-## Dashboard
+## 🛠 Getting Started
 
-The interface is organized around four views:
+See the [Demo Instructions](docs/DEMO.md) for how to set up the environment, generate synthetic data, and spin up the dashboard locally.
 
-**Overview** -- Current high-risk zones, demand stress summary, anomaly flag counts, and review status at a glance.
+## 🤝 Contributing
 
-**Demand Forecast** -- Forecast versus baseline and actual charts, zone and meter filtering, risk ranking, and accuracy metrics.
+We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md) to get started.
 
-**Anomaly Review** -- A filtered list of flagged meters with supporting evidence, confidence levels, historical context, and review actions.
+## 📄 License
 
-**Performance** -- Forecast accuracy over time, error rates, confirmed anomaly rates, false positive rates, and review outcome statistics.
-
----
-
-## Data Support
-
-WattWatch works with:
-
-- Synthetic data for development and testing
-- Masked utility data for production evaluation
-- Readings at 15-minute, hourly, or other available intervals
-- Aggregation at individual meter, zone, area, and feeder levels
-
----
-
-## Design Constraints
-
-These are non-negotiable:
-
-- No automatic actions without human approval
-- Human review is required for all flagged items
-- All outputs are explainable
-- False positives remain visible for evaluation
-- Synthetic and masked data are supported
-- No modification to existing utility systems is needed
-- Deployment as a standalone decision-support layer
-
----
-
-## Getting Started
-
-*Detailed setup and installation instructions will be added as the project takes shape.*
-
----
-
-## License
-
-*To be determined.*
+This project is licensed under the [MIT License](LICENSE).
