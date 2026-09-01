@@ -1,8 +1,8 @@
-# GridSentinel
+# WattWatch
 
 **Explainable Smart Grid Intelligence for Demand Forecasting and Anomaly Detection**
 
-GridSentinel is a standalone decision-support system built for electricity utilities. It forecasts short-term electricity demand and detects suspicious smart meter consumption patterns -- helping operators identify theft, tampering, and faulty meters before they become costly problems.
+WattWatch is a standalone decision-support system built for electricity utilities. It forecasts short-term electricity demand and detects suspicious smart meter consumption patterns -- helping operators identify theft, tampering, and faulty meters before they become costly problems.
 
 The system never takes automatic action. Every prediction and anomaly flag is routed to human operators for review.
 
@@ -10,7 +10,7 @@ The system never takes automatic action. Every prediction and anomaly flag is ro
 
 ## Why This Exists
 
-Utility operators deal with growing data volumes from smart meters but often lack the tools to make sense of it all. GridSentinel bridges that gap by combining demand forecasting with anomaly detection in a single, explainable interface. It does not require a data science background to use.
+Utility operators deal with growing data volumes from smart meters but often lack the tools to make sense of it all. WattWatch bridges that gap by combining demand forecasting with anomaly detection in a single, explainable interface. It does not require a data science background to use.
 
 ---
 
@@ -55,7 +55,7 @@ Each flagged anomaly includes:
 
 ## Human-in-the-Loop
 
-This is a core design principle, not an afterthought. GridSentinel supports human decision-making -- it does not replace it.
+This is a core design principle, not an afterthought. WattWatch supports human decision-making -- it does not replace it.
 
 **The system generates forecasts, calculates risk, detects anomalies, and presents evidence.**
 
@@ -67,7 +67,7 @@ No operational decision is made without a person in the loop.
 
 ## Explainability and Auditability
 
-GridSentinel does not produce black-box outputs. Every prediction and anomaly flag is accompanied by:
+WattWatch does not produce black-box outputs. Every prediction and anomaly flag is accompanied by:
 
 - Key factors behind the result
 - Baseline comparisons
@@ -93,7 +93,7 @@ The interface is organized around four views:
 
 ## Data Support
 
-GridSentinel works with:
+WattWatch works with:
 
 - Synthetic data for development and testing
 - Masked utility data for production evaluation
