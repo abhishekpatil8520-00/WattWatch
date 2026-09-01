@@ -8,50 +8,6 @@
   min-height: calc(100vh - 140px);
 }
 
-.development-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  z-index: 50;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 12px;
-  margin: 1rem 5%;
-}
-
-.overlay-content {
-  text-align: center;
-  background: #1e293b;
-  padding: 3rem;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-  max-width: 500px;
-}
-
-.overlay-icon {
-  color: #3b82f6;
-  margin-bottom: 1.5rem;
-}
-
-.overlay-content h2 {
-  font-size: 1.75rem;
-  margin-bottom: 0.75rem;
-  color: #f8fafc;
-}
-
-.overlay-content p {
-  color: #94a3b8;
-  margin-bottom: 2rem;
-  line-height: 1.5;
-}
-
 .dashboard-header h1 {
   font-size: 2rem;
   font-weight: 600;
@@ -82,31 +38,6 @@
   50% { opacity: 0.5; }
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-}
-
-.stat-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-.skeleton-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.skeleton-icon.small {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-}
-
 .skeleton-text {
   height: 12px;
   background: rgba(255, 255, 255, 0.05);
@@ -114,18 +45,57 @@
   margin-bottom: 0.5rem;
 }
 
-.skeleton-text.short {
-  width: 40%;
-}
-
-.skeleton-text.medium {
-  width: 70%;
-}
-
 .skeleton-text.large {
   width: 90%;
   height: 32px;
   margin-bottom: 1rem;
+}
+
+/* Live Dashboard Styles */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.stat-icon {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 6px;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
 }
 
 .charts-grid {
@@ -135,51 +105,71 @@
 }
 
 .chart-card {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
 }
 
 .chart-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.skeleton-chart-area {
-  flex: 1;
-  min-height: 300px;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
-  margin-top: 1rem;
+.chart-header h3 {
+  font-size: 1.25rem;
+  color: #f8fafc;
+  font-weight: 600;
 }
 
-.skeleton-list {
+.anomaly-list {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  flex: 1;
+  overflow-y: auto;
 }
 
-.skeleton-list-item {
+.anomaly-item {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.anomaly-item:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.anomaly-icon {
+  color: #ef4444;
+}
+
+.anomaly-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.anomaly-time {
+  color: #f8fafc;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.anomaly-score {
+  color: #ef4444;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
 @media (max-width: 1024px) {
   .charts-grid {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .development-overlay {
-    margin: 0;
-    border-radius: 0;
-  }
-  .overlay-content {
-    border-radius: 16px;
-    padding: 2rem;
-    margin: 1rem;
   }
 }
