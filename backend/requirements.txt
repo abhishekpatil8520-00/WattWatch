@@ -10,3 +10,5 @@ python-dotenv
 pytest
 pytest-mock
 httpx
+passlib[bcrypt]
+PyJWT

@@ -1,35 +1,15 @@
-/* Reset and fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-:root {
-  --primary: #10b981; /* Emerald */
-  --primary-glow: rgba(16, 185, 129, 0.5);
-  --bg-dark: #0f172a; /* Slate 900 */
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-}
-
-body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-main);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
 #root {
-  width: 100%;
-  height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
+  text-align: left;
+  min-height: 100vh;
   display: flex;
-  border: none;
-  margin: 0;
-  padding: 0;
+  flex-direction: column;
 }
 
-
+.layout-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

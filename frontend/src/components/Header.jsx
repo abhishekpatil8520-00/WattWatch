@@ -1,22 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Zap } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Zap, LogOut } from 'lucide-react';
 import './Header.css';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem('wattwatch_token');
+  const user = JSON.parse(localStorage.getItem('wattwatch_user') || 'null');
+
+  const handleLogout = () => {
+    localStorage.removeItem('wattwatch_token');
+    localStorage.removeItem('wattwatch_user');
+    navigate('/');
+  };
+
   return (
-    <header className="site-header">
+    <header className="global-header glass">
       <div className="header-container">
-        <Link to="/" className="brand">
-          <div className="brand-logo">
-            <Zap size={20} />
-          </div>
-          <span className="brand-name">WattWatch</span>
+        <Link to="/" className="logo-link">
+          <Zap className="logo-icon text-primary" size={24} />
+          <span className="logo-text">WattWatch</span>
         </Link>
         
         <nav className="header-nav">
-          <Link to="/signin" className="nav-link">Log In</Link>
-          <Link to="/signup" className="nav-btn">Sign Up</Link>
+          {token ? (
+            <>
+              <Link to="/dashboard" className="nav-link">Dashboard</Link>
+              <div className="user-menu">
+                <span className="user-name">{user?.name || 'User'}</span>
+                <button onClick={handleLogout} className="logout-btn">
+                  <LogOut size={16} />
+                  <span>Logout</span>
+                </button>
+              </div>
+            </>
+          ) : (
+            <div className="auth-links">
+              <Link to="/signin" className="nav-link">Sign In</Link>
+              <Link to="/signup" className="nav-button">Sign Up</Link>
+            </div>
+          )}
         </nav>
       </div>
     </header>

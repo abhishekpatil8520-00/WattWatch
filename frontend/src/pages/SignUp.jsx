@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User, ArrowRight, AlertCircle, CheckCircle2 } from 'lucide-react';
-import { supabase } from '../lib/supabase';
 import './Auth.css';
 
 const SignUp = () => {
@@ -19,26 +18,33 @@ const SignUp = () => {
     setSuccess('');
     setLoading(true);
     
-    const { data, error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        data: {
-          full_name: name,
-        }
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:10000';
+      const response = await fetch(`${apiUrl}/api/v1/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.detail || 'Registration failed');
       }
-    });
-    
-    if (error) {
-      setError(error.message);
+      
+      // Store token and user data
+      localStorage.setItem('wattwatch_token', data.access_token);
+      localStorage.setItem('wattwatch_user', JSON.stringify(data.user));
+      
+      setSuccess('Registration successful! Redirecting to dashboard...');
+      setTimeout(() => navigate('/dashboard'), 1500);
+      
+    } catch (err) {
+      setError(err.message);
+    } finally {
       setLoading(false);
-    } else if (data.session) {
-      // Auto login successful (Email confirmation disabled)
-      navigate('/dashboard');
-    } else {
-      setSuccess('Registration successful! Please check your email to confirm your account.');
-      setLoading(false);
-      setTimeout(() => navigate('/signin'), 3000);
     }
   };
 

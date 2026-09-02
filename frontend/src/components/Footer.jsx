@@ -1,42 +1,53 @@
 import React from 'react';
-import { GitBranch, MessageSquare, Briefcase } from 'lucide-react';
+import { Zap, Github, Twitter, Linkedin } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="site-footer">
+    <footer className="global-footer">
       <div className="footer-container">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <span className="footer-logo-text">WattWatch</span>
-            <p className="footer-tagline">Intelligent Smart Grid Monitoring</p>
+        <div className="footer-brand">
+          <div className="footer-logo">
+            <Zap className="text-primary" size={20} />
+            <span>WattWatch</span>
           </div>
-          
-          <div className="footer-devs">
-            <h4>Built by</h4>
-            <div className="dev-team">
-              <a href="https://github.com/abhishekpatil8520-00" target="_blank" rel="noreferrer" className="dev-link">
-                Abhishek Patil
-              </a>
-            </div>
-          </div>
-          
-          <div className="footer-socials">
-            <a href="https://github.com/abhishekpatil8520-00/WattWatch" target="_blank" rel="noreferrer" className="social-icon">
-              <GitBranch size={20} />
-            </a>
-            <a href="#" className="social-icon">
-              <MessageSquare size={20} />
-            </a>
-            <a href="#" className="social-icon">
-              <Briefcase size={20} />
-            </a>
+          <p className="footer-desc">
+            Advanced decision-support for smart grids. <br/>
+            Monitor, detect, and protect.
+          </p>
+          <div className="social-links">
+            <a href="#" aria-label="GitHub"><Github size={18} /></a>
+            <a href="#" aria-label="Twitter"><Twitter size={18} /></a>
+            <a href="#" aria-label="LinkedIn"><Linkedin size={18} /></a>
           </div>
         </div>
         
-        <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} WattWatch. All rights reserved.</p>
+        <div className="footer-links-group">
+          <div className="footer-column">
+            <h4>Platform</h4>
+            <a href="#">Dashboard</a>
+            <a href="#">Analytics</a>
+            <a href="#">Alerts</a>
+            <a href="#">API</a>
+          </div>
+          <div className="footer-column">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Careers</a>
+            <a href="#">Contact</a>
+            <a href="#">Blog</a>
+          </div>
+          <div className="footer-column">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
         </div>
+      </div>
+      
+      <div className="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} WattWatch Inc. All rights reserved.</p>
       </div>
     </footer>
   );
