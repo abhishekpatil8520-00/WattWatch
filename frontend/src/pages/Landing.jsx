@@ -157,15 +157,26 @@ const Landing = () => {
               </motion.span>
             </motion.span>
             <br />
-            <motion.span variants={wordVariants} className="text-emerald" style={{display: 'inline-block'}}>
-              {"Energy Monitoring".split("").map((char, index) => (
+            <motion.span variants={wordVariants} className="text-emerald" style={{display: 'inline-block', color: '#059669'}}>
+              {"Energy".split("").map((char, index) => (
                 <motion.span 
                   key={`p2-${index}`} 
                   custom={index + 10}
                   style={{display: 'inline-block'}}
                   variants={letterVariants}
                 >
-                  {char === " " ? "\u00A0" : char}
+                  {char}
+                </motion.span>
+              ))}
+              <br />
+              {"Monitoring".split("").map((char, index) => (
+                <motion.span 
+                  key={`p3-${index}`} 
+                  custom={index + 20}
+                  style={{display: 'inline-block'}}
+                  variants={letterVariants}
+                >
+                  {char}
                 </motion.span>
               ))}
             </motion.span>
