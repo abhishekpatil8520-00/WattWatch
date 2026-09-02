@@ -13,7 +13,6 @@ const Landing = () => {
 
   const yBackground = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
     <div className="landing-container" ref={containerRef}>
@@ -62,7 +61,7 @@ const Landing = () => {
       <div className="landing-hero">
         <motion.div 
           className="hero-content"
-          style={{ y: yText, opacity: opacityText }}
+          style={{ y: yText }}
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -187,16 +186,6 @@ const Landing = () => {
         </motion.div>
       </div>
       
-      {/* Scroll Down Indicator */}
-      <motion.div 
-        className="scroll-indicator"
-        animate={{ y: [0, 10, 0], opacity: [0.5, 1, 0.5] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-      >
-        <div className="mouse">
-          <div className="wheel"></div>
-        </div>
-      </motion.div>
     </div>
   );
 };
