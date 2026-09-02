@@ -4,7 +4,7 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="global-footer">
+    <footer className="global-footer glass">
       <div className="footer-container">
         <div className="footer-brand">
           <div className="footer-logo">

@@ -1,21 +1,38 @@
 .global-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 50;
   border-radius: 0;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background: rgba(9, 9, 11, 0.8);
+  border: none;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: none;
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+}
+
+.global-header.scrolled {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: padding 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.global-header.scrolled .header-container {
+  padding: 0.8rem 2rem;
 }
 
 .logo-link {
@@ -31,9 +48,9 @@
 }
 
 .logo-text {
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.25rem;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 .header-nav {
@@ -44,8 +61,8 @@
 
 .nav-link {
   color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   transition: color 0.2s;
 }
 
@@ -54,18 +71,21 @@
 }
 
 .nav-button {
-  background-color: var(--primary);
-  color: #000;
-  padding: 0.5rem 1rem;
-  border-radius: var(--radius-md);
-  font-size: 0.875rem;
-  font-weight: 600;
-  transition: background-color 0.2s;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  padding: 0.6rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .nav-button:hover {
-  background-color: var(--primary-hover);
-  color: #000;
+  background-color: #000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 .auth-links {
@@ -83,8 +103,8 @@
 }
 
 .user-name {
-  font-size: 0.875rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-primary);
 }
 
@@ -92,15 +112,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: transparent;
+  background: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  padding: 0.4rem 0.8rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
   font-size: 0.875rem;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
 .logout-btn:hover {
-  background: rgba(244, 63, 94, 0.1);
+  background: #fff;
   color: var(--error);
   border-color: rgba(244, 63, 94, 0.3);
 }

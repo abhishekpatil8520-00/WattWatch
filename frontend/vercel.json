@@ -1,4 +1,5 @@
 {
+  "name": "wattwatchlive",
   "rewrites": [
     {
       "source": "/(.*)",

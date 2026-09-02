@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Zap, LogOut } from 'lucide-react';
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import './Header.css';
 
 const Header = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('wattwatch_token');
   const user = JSON.parse(localStorage.getItem('wattwatch_user') || 'null');
+  
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
   const handleLogout = () => {
     localStorage.removeItem('wattwatch_token');
@@ -15,7 +23,12 @@ const Header = () => {
   };
 
   return (
-    <header className="global-header glass">
+    <motion.header 
+      className={`global-header glass ${isScrolled ? 'scrolled' : ''}`}
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+    >
       <div className="header-container">
         <Link to="/" className="logo-link">
           <Zap className="logo-icon text-primary" size={24} />
@@ -42,7 +55,7 @@ const Header = () => {
           )}
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
