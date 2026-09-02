@@ -91,10 +91,19 @@
   font-family: 'Bitcount Grid Double', system-ui, sans-serif;
   font-size: 4.5rem;
   line-height: 1.1;
-  font-weight: 800;
+  font-weight: 300;
   letter-spacing: -0.03em;
   margin: 0;
   color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  animation: cyber-text-glow 4s infinite alternate;
+}
+
+@keyframes cyber-text-glow {
+  0% { text-shadow: 0 0 10px rgba(16, 185, 129, 0.1), 0 0 20px rgba(16, 185, 129, 0.1); }
+  100% { text-shadow: 0 0 15px rgba(16, 185, 129, 0.6), 0 0 30px rgba(16, 185, 129, 0.4), 0 0 40px rgba(59, 130, 246, 0.2); }
 }
 
 .text-gradient {
@@ -174,6 +183,16 @@
   width: 100%;
   max-width: 500px;
   z-index: 10;
+}
+
+.cyber-bulb-glow {
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.8));
+  animation: bulb-pulse 2s infinite alternate ease-in-out;
+}
+
+@keyframes bulb-pulse {
+  0% { filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.5)) drop-shadow(0 0 20px rgba(16, 185, 129, 0.3)); transform: scale(1); }
+  100% { filter: drop-shadow(0 0 20px rgba(16, 185, 129, 1)) drop-shadow(0 0 40px rgba(59, 130, 246, 0.6)); transform: scale(1.05); }
 }
 
 .floating-elements {

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Zap, Shield, Activity, ArrowRight, Server, Hexagon } from 'lucide-react';
+import { Zap, Shield, Activity, ArrowRight, Server, Hexagon, Lightbulb } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import './Landing.css';
@@ -99,12 +99,13 @@ const Landing = () => {
           <div className="hero-svg-illustration">
             <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-[500px]">
               {/* Central Hub */}
-              <motion.circle 
-                cx="200" cy="200" r="45" 
-                fill="var(--bg-card)" stroke="var(--primary)" strokeWidth="4"
-                initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, type: 'spring' }}
-              />
-              <Zap x="176" y="176" size={48} className="text-primary" />
+              <motion.g className="cyber-bulb-glow" style={{ transformOrigin: "200px 200px" }}>
+                <circle 
+                  cx="200" cy="200" r="45" 
+                  fill="var(--bg-card)" stroke="var(--primary)" strokeWidth="4"
+                />
+                <Lightbulb x="176" y="176" size={48} className="text-primary" />
+              </motion.g>
               
               {/* Radiating Pulses */}
               <motion.circle 
