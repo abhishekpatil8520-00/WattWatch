@@ -1,8 +1,65 @@
 import React, { useRef } from 'react';
-import { Zap, Shield, Activity, ArrowRight, Server, Hexagon, Lightbulb } from 'lucide-react';
+import { Zap, Shield, Activity, ArrowRight, Server, Hexagon, Lightbulb, Leaf } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import './Landing.css';
+
+const containerVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.5,
+    }
+  }
+};
+
+const wordVariants = {
+  hidden: { opacity: 1 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    }
+  }
+};
+
+const letterVariants = {
+  hidden: { opacity: 0, filter: "brightness(0)" },
+  visible: (i) => ({
+    opacity: [0, 1, 0, 1, 0.5, 1, 1, 0, 1, 1],
+    filter: [
+      "brightness(0)",
+      "brightness(3)",
+      "brightness(0)",
+      "brightness(3)",
+      "brightness(1.5)",
+      "brightness(1)",
+      "brightness(1)",
+      "brightness(0.2)",
+      "brightness(1.5)",
+      "brightness(1)"
+    ],
+    textShadow: [
+      "none",
+      "0 0 20px #10B981, 0 0 40px #10B981",
+      "none",
+      "0 0 20px #10B981, 0 0 40px #10B981",
+      "0 0 10px #10B981",
+      "0 0 15px #10B981",
+      "0 0 15px #10B981",
+      "none",
+      "0 0 15px #10B981",
+      "0 0 15px #10B981"
+    ],
+    transition: {
+      duration: 3 + (i % 4),
+      repeat: Infinity,
+      repeatType: "loop",
+      times: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.8, 0.82, 0.85, 1]
+    }
+  })
+};
 
 const Landing = () => {
   const containerRef = useRef(null);
@@ -75,36 +132,59 @@ const Landing = () => {
             className="hero-title"
             initial="hidden"
             animate="visible"
-            variants={{
-              visible: { transition: { staggerChildren: 0.05 } }
-            }}
+            variants={containerVariants}
           >
-            {"Intelligent ".split("").map((char, index) => (
-              <motion.span 
-                key={`p1-${index}`} 
-                style={{display: 'inline-block'}}
-                variants={{
-                  hidden: { opacity: 0, textShadow: "0 0 40px #fff, 0 0 80px #10B981", filter: "brightness(3)" },
-                  visible: { opacity: 1, textShadow: "0 0 0px rgba(0,0,0,0)", filter: "brightness(1)", transition: { duration: 0.6 } }
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
-            ))}
-            <span className="text-gradient">
-              {"Energy Monitoring".split("").map((char, index) => (
+            <motion.span variants={wordVariants} style={{display: 'inline-block'}}>
+              {"Intelligent".split("").map((char, index) => (
+                <motion.span 
+                  key={`p1-${index}`} 
+                  custom={index}
+                  style={{display: 'inline-block'}}
+                  variants={letterVariants}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.span>
+            <br />
+            <motion.span variants={wordVariants} className="text-gradient" style={{display: 'inline-block'}}>
+              {"Energy".split("").map((char, index) => (
                 <motion.span 
                   key={`p2-${index}`} 
+                  custom={index + 10}
                   style={{display: 'inline-block'}}
-                  variants={{
-                    hidden: { opacity: 0, textShadow: "0 0 40px #fff, 0 0 80px #10B981", filter: "brightness(3)" },
-                    visible: { opacity: 1, textShadow: "0 0 0px rgba(0,0,0,0)", filter: "brightness(1)", transition: { duration: 0.6 } }
-                  }}
+                  variants={letterVariants}
+                >
+                  {char}
+                </motion.span>
+              ))}
+              
+              <motion.span 
+                style={{display: 'inline-block', verticalAlign: 'middle', margin: '0 12px'}}
+                variants={{
+                  hidden: { opacity: 0, scale: 0 },
+                  visible: { opacity: 1, scale: 1, transition: { duration: 0.6 } }
+                }}
+              >
+                <motion.div
+                  animate={{ rotate: [-8, 8, -8], scale: [1, 1.05, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <Leaf className="text-emerald-500" size={54} color="#10B981" />
+                </motion.div>
+              </motion.span>
+
+              {" Monitoring".split("").map((char, index) => (
+                <motion.span 
+                  key={`p3-${index}`} 
+                  custom={index + 20}
+                  style={{display: 'inline-block'}}
+                  variants={letterVariants}
                 >
                   {char === " " ? "\u00A0" : char}
                 </motion.span>
               ))}
-            </span>
+            </motion.span>
           </motion.h1>
           
           <p className="hero-subtitle">
