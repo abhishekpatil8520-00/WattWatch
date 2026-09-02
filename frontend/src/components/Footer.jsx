@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, Github, Twitter, Linkedin } from 'lucide-react';
+import { Zap, Globe, Mail, MessageSquare } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -16,9 +16,9 @@ const Footer = () => {
             Monitor, detect, and protect.
           </p>
           <div className="social-links">
-            <a href="#" aria-label="GitHub"><Github size={18} /></a>
-            <a href="#" aria-label="Twitter"><Twitter size={18} /></a>
-            <a href="#" aria-label="LinkedIn"><Linkedin size={18} /></a>
+            <a href="#" aria-label="Website"><Globe size={18} /></a>
+            <a href="#" aria-label="Twitter"><MessageSquare size={18} /></a>
+            <a href="#" aria-label="LinkedIn"><Mail size={18} /></a>
           </div>
         </div>
         
