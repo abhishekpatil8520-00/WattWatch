@@ -1,9 +1,0 @@
-{
-  "name": "wattwatchlive",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
-}
