@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { Zap, Shield, Activity, ArrowRight, Server, Hexagon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Spline from '@splinetool/react-spline';
 import './Landing.css';
 
 const Landing = () => {
@@ -97,9 +96,64 @@ const Landing = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          {/* Spline 3D Object Scene */}
-          <div className="spline-wrapper">
-            <Spline scene="https://prod.spline.design/6Wq1Q7YGyM-iab9i/scene.splinecode" />
+          {/* Contextual Smart Grid SVG Illustration */}
+          <div className="hero-svg-illustration">
+            <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-[500px]">
+              {/* Central Hub */}
+              <motion.circle 
+                cx="200" cy="200" r="45" 
+                fill="var(--bg-card)" stroke="var(--primary)" strokeWidth="4"
+                initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ duration: 0.5, type: 'spring' }}
+              />
+              <Zap x="176" y="176" size={48} className="text-primary" />
+              
+              {/* Radiating Pulses */}
+              <motion.circle 
+                cx="200" cy="200" r="45" fill="none" stroke="var(--primary)" strokeWidth="2"
+                animate={{ r: [45, 90], opacity: [0.8, 0] }} transition={{ duration: 2, repeat: Infinity }}
+              />
+
+              {/* Data Lines & Nodes */}
+              <g stroke="var(--border-color)" strokeWidth="2" strokeDasharray="5,5">
+                <line x1="200" y1="155" x2="200" y2="80" />
+                <line x1="200" y1="245" x2="200" y2="320" />
+                <line x1="155" y1="200" x2="80" y2="200" />
+                <line x1="245" y1="200" x2="320" y2="200" />
+                <line x1="168" y1="168" x2="110" y2="110" />
+                <line x1="232" y1="232" x2="290" y2="290" />
+              </g>
+
+              {/* Node Icons */}
+              <motion.g animate={{ y: [0, -5, 0] }} transition={{ duration: 3, repeat: Infinity }}>
+                <circle cx="200" cy="70" r="20" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="2" />
+                <Activity x="190" y="60" size={20} className="text-warning" />
+              </motion.g>
+
+              <motion.g animate={{ y: [0, 5, 0] }} transition={{ duration: 3.2, repeat: Infinity, delay: 0.5 }}>
+                <circle cx="200" cy="330" r="20" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="2" />
+                <Server x="190" y="320" size={20} className="text-blue" />
+              </motion.g>
+
+              <motion.g animate={{ x: [0, -5, 0] }} transition={{ duration: 2.8, repeat: Infinity, delay: 1 }}>
+                <circle cx="70" cy="200" r="20" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="2" />
+                <Shield x="60" y="190" size={20} className="text-primary" />
+              </motion.g>
+
+              <motion.g animate={{ x: [0, 5, 0] }} transition={{ duration: 3.5, repeat: Infinity, delay: 1.5 }}>
+                <circle cx="330" cy="200" r="20" fill="var(--bg-secondary)" stroke="var(--text-secondary)" strokeWidth="2" />
+                <Hexagon x="320" y="190" size={20} className="text-primary" />
+              </motion.g>
+              
+              {/* Floating Data Packets */}
+              <motion.circle cx="200" cy="155" r="4" fill="var(--primary)"
+                animate={{ cy: [155, 80], opacity: [1, 0] }} transition={{ duration: 1.5, repeat: Infinity }} />
+              <motion.circle cx="200" cy="245" r="4" fill="var(--blue)"
+                animate={{ cy: [245, 320], opacity: [1, 0] }} transition={{ duration: 1.8, repeat: Infinity, delay: 0.5 }} />
+              <motion.circle cx="155" cy="200" r="4" fill="var(--warning)"
+                animate={{ cx: [155, 80], opacity: [1, 0] }} transition={{ duration: 1.6, repeat: Infinity, delay: 1 }} />
+              <motion.circle cx="245" cy="200" r="4" fill="var(--primary)"
+                animate={{ cx: [245, 320], opacity: [1, 0] }} transition={{ duration: 1.7, repeat: Infinity, delay: 0.2 }} />
+            </svg>
           </div>
 
           <div className="floating-elements">
