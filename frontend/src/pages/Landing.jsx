@@ -71,9 +71,41 @@ const Landing = () => {
             Smart Grid Platform 2.0
           </div>
           
-          <h1 className="hero-title">
-            Intelligent <span className="text-gradient">Energy Monitoring</span>
-          </h1>
+          <motion.h1 
+            className="hero-title"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              visible: { transition: { staggerChildren: 0.05 } }
+            }}
+          >
+            {"Intelligent ".split("").map((char, index) => (
+              <motion.span 
+                key={`p1-${index}`} 
+                style={{display: 'inline-block'}}
+                variants={{
+                  hidden: { opacity: 0, textShadow: "0 0 40px #fff, 0 0 80px #10B981", filter: "brightness(3)" },
+                  visible: { opacity: 1, textShadow: "0 0 0px rgba(0,0,0,0)", filter: "brightness(1)", transition: { duration: 0.6 } }
+                }}
+              >
+                {char === " " ? "\u00A0" : char}
+              </motion.span>
+            ))}
+            <span className="text-gradient">
+              {"Energy Monitoring".split("").map((char, index) => (
+                <motion.span 
+                  key={`p2-${index}`} 
+                  style={{display: 'inline-block'}}
+                  variants={{
+                    hidden: { opacity: 0, textShadow: "0 0 40px #fff, 0 0 80px #10B981", filter: "brightness(3)" },
+                    visible: { opacity: 1, textShadow: "0 0 0px rgba(0,0,0,0)", filter: "brightness(1)", transition: { duration: 0.6 } }
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </span>
+          </motion.h1>
           
           <p className="hero-subtitle">
             Advanced decision-support tool for smart grids. Detect anomalies, prevent energy theft, and monitor infrastructure in real-time with our beautiful, explainable platform.
