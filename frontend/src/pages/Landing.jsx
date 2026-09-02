@@ -27,16 +27,12 @@ const wordVariants = {
 const letterVariants = {
   hidden: { opacity: 0, filter: "brightness(0)" },
   visible: (i) => ({
-    opacity: [0, 1, 0, 1, 0.5, 1, 1, 0, 1, 1],
+    opacity: [0, 1, 0, 1, 0.5, 1],
     filter: [
       "brightness(0)",
       "brightness(3)",
       "brightness(0)",
       "brightness(3)",
-      "brightness(1.5)",
-      "brightness(1)",
-      "brightness(1)",
-      "brightness(0.2)",
       "brightness(1.5)",
       "brightness(1)"
     ],
@@ -46,17 +42,11 @@ const letterVariants = {
       "none",
       "0 0 20px #10B981, 0 0 40px #10B981",
       "0 0 10px #10B981",
-      "0 0 15px #10B981",
-      "0 0 15px #10B981",
-      "none",
-      "0 0 15px #10B981",
       "0 0 15px #10B981"
     ],
     transition: {
-      duration: 3 + (i % 4),
-      repeat: Infinity,
-      repeatType: "loop",
-      times: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.8, 0.82, 0.85, 1]
+      duration: 1 + (i % 3) * 0.3,
+      times: [0, 0.1, 0.2, 0.3, 0.5, 1]
     }
   })
 };
