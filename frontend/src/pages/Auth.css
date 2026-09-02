@@ -178,3 +178,43 @@
 .auth-link:hover {
   text-decoration: underline;
 }
+
+/* Sliding Toggle Slider */
+.auth-toggle-slider {
+  display: flex;
+  position: relative;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  padding: 4px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-light);
+}
+
+.toggle-option {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+.toggle-highlighter {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+}
+
+.auth-form-container {
+  position: relative;
+  overflow: hidden;
+}

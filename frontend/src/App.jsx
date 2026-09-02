@@ -3,8 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import Layout from './components/Layout';
 import Landing from './pages/Landing';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
 import './App.css';
 
@@ -48,8 +47,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Landing />} />
-          <Route path="signin" element={<SignIn />} />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="signin" element={<Auth />} />
+          <Route path="signup" element={<Auth />} />
           <Route path="dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
