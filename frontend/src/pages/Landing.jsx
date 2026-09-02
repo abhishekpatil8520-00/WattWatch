@@ -123,11 +123,6 @@ const Landing = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <div className="badge-pill glass">
-            <span className="dot pulse"></span>
-            Smart Grid Platform 2.0
-          </div>
-          
           <motion.h1 
             className="hero-title"
             initial="hidden"
@@ -145,20 +140,7 @@ const Landing = () => {
                   {char}
                 </motion.span>
               ))}
-            </motion.span>
-            <br />
-            <motion.span variants={wordVariants} className="text-gradient" style={{display: 'inline-block'}}>
-              {"Energy".split("").map((char, index) => (
-                <motion.span 
-                  key={`p2-${index}`} 
-                  custom={index + 10}
-                  style={{display: 'inline-block'}}
-                  variants={letterVariants}
-                >
-                  {char}
-                </motion.span>
-              ))}
-              
+
               <motion.span 
                 style={{display: 'inline-block', verticalAlign: 'middle', margin: '0 12px'}}
                 variants={{
@@ -173,11 +155,13 @@ const Landing = () => {
                   <Leaf className="text-emerald-500" size={54} color="#10B981" />
                 </motion.div>
               </motion.span>
-
-              {" Monitoring".split("").map((char, index) => (
+            </motion.span>
+            <br />
+            <motion.span variants={wordVariants} className="text-emerald" style={{display: 'inline-block'}}>
+              {"Energy Monitoring".split("").map((char, index) => (
                 <motion.span 
-                  key={`p3-${index}`} 
-                  custom={index + 20}
+                  key={`p2-${index}`} 
+                  custom={index + 10}
                   style={{display: 'inline-block'}}
                   variants={letterVariants}
                 >
