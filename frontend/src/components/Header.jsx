@@ -31,10 +31,37 @@ const Header = () => {
     >
       <div className="header-container">
         <Link to="/" className="logo-link">
-          <Zap className="logo-icon text-primary" size={24} />
-          <span className="logo-text">WattWatch</span>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+          >
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <motion.path 
+                d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" 
+                stroke="var(--primary)" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                fill="rgba(16, 185, 129, 0.2)"
+                animate={{ fillOpacity: [0.2, 0.8, 0.2] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+            </svg>
+          </motion.div>
+          <span className="logo-text">
+            {"WattWatch".split('').map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05, duration: 0.5, type: "spring" }}
+                style={{ display: "inline-block" }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </span>
         </Link>
-        
         <nav className="header-nav">
           {token ? (
             <>

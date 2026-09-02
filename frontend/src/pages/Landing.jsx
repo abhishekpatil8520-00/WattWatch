@@ -19,16 +19,43 @@ const Landing = () => {
   return (
     <div className="landing-container" ref={containerRef}>
       
-      {/* Background Parallax Elements */}
+      {/* Animated Grid SVG Background */}
       <motion.div className="parallax-bg-elements" style={{ y: yBackground }}>
-        <div className="svg-blob blob-1">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="rgba(16, 185, 129, 0.1)" d="M47.7,-57.2C59.4,-47.3,64.8,-29.4,66.5,-12.3C68.2,4.8,66.1,21,57.1,33.5C48.1,46,32.2,54.7,14.6,60.1C-3,65.5,-22.3,67.6,-38.3,61C-54.3,54.4,-67,39.1,-72.1,21.5C-77.2,3.9,-74.7,-16,-65.4,-32.1C-56.1,-48.2,-40.1,-60.5,-23.5,-64.1C-6.9,-67.7,10.3,-62.7,26.5,-57.2Z" transform="translate(100 100)" />
-          </svg>
-        </div>
-        <div className="svg-blob blob-2">
-          <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="rgba(59, 130, 246, 0.1)" d="M54.8,-63.9C71.3,-52.4,85,-35.1,88.7,-15.8C92.4,3.5,86,24.8,73.4,41.9C60.8,59,42,71.9,21.1,77.5C0.2,83.1,-22.8,81.4,-41.8,71.7C-60.8,62,-75.8,44.3,-82.1,23.8C-88.4,3.3,-86,-20.1,-75.4,-38.7C-64.8,-57.3,-46,-71.1,-27.4,-77.1C-8.8,-83.1,9.6,-81.3,27.5,-73.9Z" transform="translate(100 100)" />
+        <div className="svg-grid-container">
+          <svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" className="energy-grid-svg">
+            <g className="grid-lines" stroke="var(--primary)" strokeWidth="1" strokeOpacity="0.15" fill="none">
+              <motion.path 
+                d="M 100 500 L 300 300 L 500 400 L 700 200" 
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 4, ease: "linear", repeat: Infinity }}
+              />
+              <motion.path 
+                d="M 100 200 L 300 400 L 600 300 L 700 500" 
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 5, ease: "linear", repeat: Infinity, delay: 1 }}
+              />
+              <motion.path 
+                d="M 200 100 L 400 350 L 500 250 L 650 450" 
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 4.5, ease: "linear", repeat: Infinity, delay: 0.5 }}
+                stroke="var(--accent)"
+                strokeOpacity="0.2"
+              />
+            </g>
+            
+            <g className="grid-nodes">
+              <motion.circle cx="300" cy="300" r="4" fill="var(--primary)" 
+                animate={{ scale: [1, 2, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }} />
+              <motion.circle cx="500" cy="400" r="6" fill="var(--accent)" 
+                animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0.8, 0.3] }} transition={{ duration: 3, repeat: Infinity, delay: 1 }} />
+              <motion.circle cx="300" cy="400" r="5" fill="var(--warning)" 
+                animate={{ scale: [1, 2.5, 1], opacity: [0.4, 0.9, 0.4] }} transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }} />
+              <motion.circle cx="600" cy="300" r="4" fill="var(--primary)" 
+                animate={{ scale: [1, 2, 1], opacity: [0.2, 0.7, 0.2] }} transition={{ duration: 1.8, repeat: Infinity, delay: 1.5 }} />
+            </g>
           </svg>
         </div>
       </motion.div>

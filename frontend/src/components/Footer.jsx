@@ -26,22 +26,15 @@ const Footer = () => {
           <div className="footer-column">
             <h4>Platform</h4>
             <a href="#">Dashboard</a>
-            <a href="#">Analytics</a>
-            <a href="#">Alerts</a>
             <a href="#">API</a>
           </div>
           <div className="footer-column">
             <h4>Company</h4>
-            <a href="#">About Us</a>
-            <a href="#">Careers</a>
             <a href="#">Contact</a>
-            <a href="#">Blog</a>
           </div>
           <div className="footer-column">
             <h4>Legal</h4>
             <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-            <a href="#">Cookie Policy</a>
           </div>
         </div>
       </div>
